@@ -4,6 +4,6 @@ pytest-cov
 pylint
 ruff
 requests
-pandas
+
 python-dotenv
 databricks-sql-connector
