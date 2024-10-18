@@ -13,21 +13,17 @@ def test_extract():
 
 def test_trans_load():
     '''tests if trans_load generates all 51 rows for all states as expected'''
-    load_dotenv()
     output = trans_load()
-    print('expected 51', len(output))
     assert len(output) == 51
 
 def test_create_table2():
     '''tests if create_table generates a new table with 51 rows'''
     output = create_table2()
-    print('expected 51', len(output))
     assert len(output) == 51
 
 def test_query_complex():
     '''tests if query_complex generates an aggregate table with 16 rows'''
     output = query_complex()
-    print('expected 16', len(output))
     assert len(output) == 16 
 
 if __name__ == "__main__":
