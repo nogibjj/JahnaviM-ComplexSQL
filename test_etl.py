@@ -1,7 +1,6 @@
 '''This script is to test the etl.py script'''
 
 import os
-from dotenv import load_dotenv
 from mylib.query import create_table2, query_complex
 from mylib.extract import extract
 from mylib.transform_load import trans_load
