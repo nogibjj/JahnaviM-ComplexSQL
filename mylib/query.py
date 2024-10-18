@@ -17,8 +17,14 @@ def create_table2():
             # Create main table
             cursor.execute('''CREATE TABLE jm_baddrivers_speed 
                            AS SELECT state, drivers_count*speeding_percent/100 as speed_ct FROM jm_baddrivers;''')
+            
+            # create output from fetching new table to return for testing
+            cursor.execute('''SELECT * FROM jm_baddrivers_speed''')
+            output = cursor.fetchall()
+            
             cursor.close()
             connection.close()
+    return output
 
 def query_complex():
     load_dotenv()
@@ -38,79 +44,9 @@ def query_complex():
                 print(row)
             cursor.close()
             connection.close()
+    return output
     
 
 if __name__ == "__main__":
     create_table2()
     query_complex()
-
-# def read_db():
-#     '''Reads the bad drivers db and shows those results'''
-#     # Create connection
-#     connection = sqlite3.connect('badDrivers.db')
-#     cursor = connection.cursor()
-
-#     # Read rows
-#     print('[READ] Reading the first 5 rows...')
-#     query = 'SELECT * FROM badDrivers ORDER BY state LIMIT 5;'
-#     cursor.execute(query)
-#     output = cursor.fetchall()
-
-#     # Display results
-#     print(f'   Query: \n\t{query}\n   Output:')
-#     for row in output:
-#         print('\t', row)
-    
-#     # Close connection
-#     connection.close()
-#     print()
-#     return output
-
-# def update_ca():
-#     '''Updates bad drivers db California drivers_count value'''
-#     # Create connection
-#     connection = sqlite3.connect('badDrivers.db')
-#     cursor = connection.cursor()
-
-#     # Update Row
-#     print('[UPDATE] Updating Califonia data...')
-#     query1 = "UPDATE badDrivers SET drivers_count = 13 WHERE state = 'California'; "
-#     cursor.execute(query1)
-
-#     # Display Results
-#     query2 = "SELECT * FROM badDrivers WHERE state = 'California';"
-#     cursor.execute(query2)
-#     output = cursor.fetchall()
-#     print(f'   Queries: \n\t{query1}\n\t{query2}\n   Output:')
-#     for row in output:
-#         print('\t', row)
-    
-#     # Close connection
-#     connection.commit()
-#     connection.close()
-#     print()
-#     return output
-
-# def delete_ca():
-#     '''Deletes rows from bad drivers db when the state value is California'''
-#     # Create connection
-#     connection = sqlite3.connect('badDrivers.db')
-#     cursor = connection.cursor()
-
-#     # Delete row
-#     print('[DLETE] Deleting a row...')
-#     query1 = "DELETE FROM badDrivers WHERE state = 'California'; "
-#     cursor.execute(query1)
-
-#     # Display results
-#     query2 = "SELECT * FROM badDrivers order by state LIMIT 5;"
-#     cursor.execute(query2)
-#     output = cursor.fetchall()
-#     print(f'   Queries: \n\t{query1}\n\t{query2}\n   Output:')
-#     for row in output:
-#         print('\t', row)
-
-#     # Close connection
-#     connection.commit()
-#     connection.close()
-#     return output

@@ -40,8 +40,13 @@ def trans_load(path = PATH):
                 insert_sql_str += '\n' + str(tuple(ln)) + end_char
             cursor.execute(insert_sql_str)
 
+            # create output result of this created table to return for testing
+            cursor.execute("SELECT * FROM jm_baddrivers")
+            output = cursor.fetchall()
+            
             cursor.close()
             connection.close()
+    return output
 
 if __name__ == "__main__":
     trans_load()
