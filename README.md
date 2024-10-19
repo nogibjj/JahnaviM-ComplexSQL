@@ -29,8 +29,8 @@ To use this repository, start by cloning it, or open a codespace. Make sure all 
 | speed_ct    | double    | Number of drivers who were speeding and involved in fatal collisions per billion miles |
 
 ## Queries + Explanation
-1. CTAS for Table 2 jm_baddrivers_speed
-```
+1. CTAS for Table 2, jm_baddrivers_speed
+```sql
 CREATE TABLE jm_baddrivers_speed AS
   SELECT state, drivers_count * speeding_percent/100 as speed_ct
   FROM jm_baddrivers;
@@ -62,7 +62,7 @@ ORDER BY: The final output is sorted in ascending order based on the counts in t
 ## Example Script Result
 <img width="744" alt="image" src="https://github.com/user-attachments/assets/c5cdb2b8-6b14-4d46-8858-c8ccfe9eacec">
 
-Example interpretation of the row where rounded_driv_ct=11.0:
+Example interpretation of the row where ```rounded_driv_ct```=11.0:
 There are 5 states whose number of drivers involved in fatal collisions per billion miles is in the range [10.5, 11.5). On average, these states find approximately 3.97 bad drivers per billion who were also speeding during the collision.
 
 Using this information, one could compare the trend of fatal collisions and speeding rates. 
